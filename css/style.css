@@ -1,12 +1,12 @@
-.slide-show__image {
+.slide-show__image-box {
 	display: none;
 }
 
-.slide-show__image img{
+.slide-show__image-box img {
 	height: 200px;
 	width: 200px;
 }
 
-.slide-show__image--visible{
+.slide-show__image-box--visible{
 	display: block;
 }
