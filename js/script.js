@@ -31,7 +31,7 @@ goToImage10.addEventListener('click', handleGoToImageClick)
 
 window.addEventListener('keyup', handleKeyUp)
 
-images[0].classList.toggle('slide-show__image--visible')
+images[currentImage].classList.toggle('slide-show__image--visible')
 
 function handleNextBtnClick() {
 	images[currentImage].classList.toggle('slide-show__image--visible');
@@ -48,7 +48,7 @@ function handleNextBtnClick() {
 function handlePrevBtnClick() {
 	images[currentImage].classList.toggle('slide-show__image--visible');
 	if(currentImage===0){
-		currentImage = 9;
+		currentImage = (images.length-1);
 		images[currentImage].classList.toggle('slide-show__image--visible')
 	}else{
 		currentImage -= 1;
@@ -113,7 +113,7 @@ function handleKeyUp(event) {
 	images[currentImage].classList.toggle('slide-show__image--visible');
 	if(event.key==='ArrowLeft'){
 		if(currentImage===0){
-			currentImage = 9;
+			currentImage = (images.length-1);
 			images[currentImage].classList.toggle('slide-show__image--visible')
 		}else{
 			currentImage -= 1;
