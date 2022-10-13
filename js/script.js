@@ -54,7 +54,6 @@ function handlePrevBtnClick() {
 		currentImage -= 1;
 		images[currentImage].classList.toggle('slide-show__image--visible')
 	}
-	
 }
 
 function handleGoToImageClick(event) {
@@ -106,7 +105,6 @@ function handleGoToImageClick(event) {
 
 			break;
 	}
-
 }
 
 function handleKeyUp(event) {
@@ -128,6 +126,5 @@ function handleKeyUp(event) {
 			currentImage += 1;
 			images[currentImage].classList.toggle('slide-show__image--visible')
 		}
-		
 	}
 }
