@@ -63,44 +63,44 @@ function handleGoToImageClick(event) {
 	images[currentImage].classList.toggle('slide-show__image--visible');
 	switch (currentTarget.id) {
 		case 'btn1':
-			images[0].classList.toggle('slide-show__image--visible')
 			currentImage=0;
+			images[currentImage].classList.toggle('slide-show__image--visible')
 			break;
 		case 'btn2':
-			images[1].classList.toggle('slide-show__image--visible')
 			currentImage=1;
+			images[currentImage].classList.toggle('slide-show__image--visible');
 			break;
 		case 'btn3':
-			images[2].classList.toggle('slide-show__image--visible')
 			currentImage=2
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn4':
-			images[3].classList.toggle('slide-show__image--visible')
 			currentImage=3
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn5':
-			images[4].classList.toggle('slide-show__image--visible')
 			currentImage=4
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn6':
-			images[5].classList.toggle('slide-show__image--visible')
 			currentImage=5
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn7':
-			images[6].classList.toggle('slide-show__image--visible')
 			currentImage=6
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn8':
-			images[7].classList.toggle('slide-show__image--visible')
 			currentImage=7
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn9':
-			images[8].classList.toggle('slide-show__image--visible')
 			currentImage=8
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		case 'btn10':
-			images[9].classList.toggle('slide-show__image--visible')
 			currentImage=9
+			images[currentImage].classList.toggle('slide-show__image--visible')
 		break;
 		default:
 
