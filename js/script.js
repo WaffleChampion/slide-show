@@ -1,8 +1,8 @@
 const images = document.querySelectorAll('.slide-show__image-box');
 const nextButton = document.querySelector('.slide-show__next-image');
 const previousButton = document.querySelector('.slide-show__previous-image');
-//const goToImageButton = document.querySelectorAll('.image-button__go-to')
-const goToImage1 = document.querySelector('#btn1');
+const goToImageButton = document.querySelectorAll('.image-button__go-to')
+/* const goToImage1 = document.querySelector('#btn1');
 const goToImage2 = document.querySelector('#btn2');
 const goToImage3 = document.querySelector('#btn3');
 const goToImage4 = document.querySelector('#btn4');
@@ -11,7 +11,7 @@ const goToImage6 = document.querySelector('#btn6');
 const goToImage7 = document.querySelector('#btn7');
 const goToImage8 = document.querySelector('#btn8');
 const goToImage9 = document.querySelector('#btn9');
-const goToImage10 = document.querySelector('#btn10');
+const goToImage10 = document.querySelector('#btn10'); */
 
 let currentImage = 0;
 
@@ -19,8 +19,11 @@ const toggleImageVisible = 'slide-show__image-box--visible';
 
 nextButton.addEventListener('click', handleNextBtnClick);
 previousButton.addEventListener('click', handlePrevBtnClick);
-//goToImageButton[2].addEventListener('click', handleGoToImageClick)
-goToImage1.addEventListener('click', handleGoToImageClick)
+goToImageButton.forEach(button =>{
+	button.addEventListener('click', handleGoToImageClick)
+})
+
+/* goToImage1.addEventListener('click', handleGoToImageClick)
 goToImage2.addEventListener('click', handleGoToImageClick)
 goToImage3.addEventListener('click', handleGoToImageClick)
 goToImage4.addEventListener('click', handleGoToImageClick)
@@ -29,7 +32,7 @@ goToImage6.addEventListener('click', handleGoToImageClick)
 goToImage7.addEventListener('click', handleGoToImageClick)
 goToImage8.addEventListener('click', handleGoToImageClick)
 goToImage9.addEventListener('click', handleGoToImageClick)
-goToImage10.addEventListener('click', handleGoToImageClick)
+goToImage10.addEventListener('click', handleGoToImageClick) */
 
 window.addEventListener('keyup', handleKeyUp)
 
@@ -60,7 +63,6 @@ function handlePrevBtnClick() {
 }
 
 function handleGoToImageClick(event) {
-	console.log(event.currentTarget.id);
 	let currentTarget = event.currentTarget;
 	images[currentImage].classList.toggle(toggleImageVisible);;
 	switch (currentTarget.id) {
