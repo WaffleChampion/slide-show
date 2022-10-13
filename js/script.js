@@ -15,7 +15,7 @@ const goToImage10 = document.querySelector('#btn10');
 
 let currentImage = 0;
 
-const toggleImagesVisible = images[currentImage].classList.toggle('slide-show__image-box--visible');
+const toggleImageVisible = 'slide-show__image-box--visible';
 
 nextButton.addEventListener('click', handleNextBtnClick);
 previousButton.addEventListener('click', handlePrevBtnClick);
@@ -33,28 +33,28 @@ goToImage10.addEventListener('click', handleGoToImageClick)
 
 window.addEventListener('keyup', handleKeyUp)
 
-toggleImagesVisible;
+images[currentImage].classList.toggle(toggleImageVisible);;
 
 function handleNextBtnClick() {
-	toggleImagesVisible;
+	images[currentImage].classList.toggle(toggleImageVisible);;
 	if((currentImage+1)===images.length){
 		currentImage = 0;
-		toggleImagesVisible;
+		images[currentImage].classList.toggle(toggleImageVisible);;
 	}else{
 		currentImage += 1;
-		toggleImagesVisible;
+		images[currentImage].classList.toggle(toggleImageVisible);;
 	}
 }
 
 
 function handlePrevBtnClick() {
-	toggleImagesVisible;
+	images[currentImage].classList.toggle(toggleImageVisible);;
 	if(currentImage===0){
 		currentImage = (images.length-1);
-		toggleImagesVisible;
+		images[currentImage].classList.toggle(toggleImageVisible);;
 	}else{
 		currentImage -= 1;
-		toggleImagesVisible;
+		images[currentImage].classList.toggle(toggleImageVisible);;
 	}
 	
 }
@@ -62,47 +62,47 @@ function handlePrevBtnClick() {
 function handleGoToImageClick(event) {
 	console.log(event.currentTarget.id);
 	let currentTarget = event.currentTarget;
-	toggleImagesVisible;
+	images[currentImage].classList.toggle(toggleImageVisible);;
 	switch (currentTarget.id) {
 		case 'btn1':
 			currentImage=0;
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 			break;
 		case 'btn2':
 			currentImage=1;
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 			break;
 		case 'btn3':
 			currentImage=2
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn4':
 			currentImage=3
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn5':
 			currentImage=4
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn6':
 			currentImage=5
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn7':
 			currentImage=6
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn8':
 			currentImage=7
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn9':
 			currentImage=8
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		case 'btn10':
 			currentImage=9
-			toggleImagesVisible;
+			images[currentImage].classList.toggle(toggleImageVisible);;
 		break;
 		default:
 
@@ -113,23 +113,23 @@ function handleGoToImageClick(event) {
 
 function handleKeyUp(event) {
 	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
-		toggleImagesVisible;;
+		images[currentImage].classList.toggle(toggleImageVisible);;;
 		if(event.key==='ArrowLeft'){
 			if(currentImage===0){
 				currentImage = (images.length-1);
-				toggleImagesVisible;
+				images[currentImage].classList.toggle(toggleImageVisible);;
 			}else{
 				currentImage -= 1;
-				toggleImagesVisible;
+				images[currentImage].classList.toggle(toggleImageVisible);;
 			}
 			
 		}else if(event.key==='ArrowRight'){
 			if((currentImage+1)===images.length){
 				currentImage = 0;
-				toggleImagesVisible;
+				images[currentImage].classList.toggle(toggleImageVisible);;
 			}else{
 				currentImage += 1;
-				toggleImagesVisible;
+				images[currentImage].classList.toggle(toggleImageVisible);;
 			}
 		}
 	}
