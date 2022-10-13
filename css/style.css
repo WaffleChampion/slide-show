@@ -1,0 +1,12 @@
+.slide-show__image {
+	display: none;
+}
+
+.slide-show__image img{
+	height: 200px;
+	width: 200px;
+}
+
+.slide-show__image--visible{
+	display: block;
+}
