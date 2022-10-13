@@ -1,6 +1,6 @@
 const images = document.querySelectorAll('.slide-show__images');
 const nextButton = document.querySelector('.next-image');
-const prevButton = document.querySelector('.previous-image')
+const previousButton = document.querySelector('.previous-image')
 const goToImageButton = document.querySelector('.go-to-image-btn')
 
 let currentImage = 0;
