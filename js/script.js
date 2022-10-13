@@ -110,24 +110,26 @@ function handleGoToImageClick(event) {
 }
 
 function handleKeyUp(event) {
-	images[currentImage].classList.toggle('slide-show__image--visible');
-	if(event.key==='ArrowLeft'){
-		if(currentImage===0){
-			currentImage = (images.length-1);
-			images[currentImage].classList.toggle('slide-show__image--visible')
-		}else{
-			currentImage -= 1;
-			images[currentImage].classList.toggle('slide-show__image--visible')
+	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
+		images[currentImage].classList.toggle('slide-show__image--visible');
+		if(event.key==='ArrowLeft'){
+			if(currentImage===0){
+				currentImage = (images.length-1);
+				images[currentImage].classList.toggle('slide-show__image--visible')
+			}else{
+				currentImage -= 1;
+				images[currentImage].classList.toggle('slide-show__image--visible')
+			}
+			
+		}else if(event.key==='ArrowRight'){
+			if((currentImage+1)===images.length){
+				currentImage = 0;
+				images[currentImage].classList.toggle('slide-show__image--visible')
+			}else{
+				currentImage += 1;
+				images[currentImage].classList.toggle('slide-show__image--visible')
+			}
+			
 		}
-		
-	}else if(event.key==='ArrowRight'){
-		if((currentImage+1)===images.length){
-			currentImage = 0;
-			images[currentImage].classList.toggle('slide-show__image--visible')
-		}else{
-			currentImage += 1;
-			images[currentImage].classList.toggle('slide-show__image--visible')
-		}
-		
 	}
 }
