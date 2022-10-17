@@ -10,7 +10,7 @@ const toggleImageVisible = 'slide-show__image-box--visible';
 nextButton.addEventListener('click', handleNextbuttonClick);
 previousButton.addEventListener('click', handlePrevbuttonClick);
 images.forEach(image => {
-	image.addEventListener('mouseup', handleMouseUp)
+	image.addEventListener('click', handleMouseUp)
 	//image.addEventListener('click', handleNextbuttonClick)
 })
 
@@ -20,44 +20,40 @@ goToImageButton.forEach(button => {
 
 window.addEventListener('keyup', handleKeyUp)
 
-images[currentImage].classList.toggle(toggleImageVisible);;
+images[currentImage].classList.toggle(toggleImageVisible);
 
 function handleMouseUp (event) {
 	let style = getComputedStyle(event.currentTarget.firstElementChild)
-	let height= parseInt(style.height)
 	let width = parseInt(style.width)
-	if(event.offsetX >= 0 && event.offsetX <= width && event.offsetY >= 0 && event.offsetY <= height){
-		images[currentImage].classList.toggle(toggleImageVisible);;
-		if(event.offsetX >= (width/2) && event.offsetX <= width){
-			if((currentImage+1)===images.length){
-				currentImage = 0;
-				images[currentImage].classList.toggle(toggleImageVisible);;
-			}else{
-				currentImage += 1;
-				images[currentImage].classList.toggle(toggleImageVisible);;
-			}
+	images[currentImage].classList.toggle(toggleImageVisible);
+	if(event.offsetX >= (width/2) && event.offsetX <= width){
+		if((currentImage+1)===images.length){
+			currentImage = 0;
+			images[currentImage].classList.toggle(toggleImageVisible);
+		}else{
+			currentImage += 1;
+			images[currentImage].classList.toggle(toggleImageVisible);
+		}
 			
-		}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
-			if(currentImage===0){
-				currentImage = (images.length-1);
-				images[currentImage].classList.toggle(toggleImageVisible);;
-			}else{
-				currentImage -= 1;
-				images[currentImage].classList.toggle(toggleImageVisible);;
-			}
+	}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
+		if(currentImage===0){
+			currentImage = (images.length-1);
+			images[currentImage].classList.toggle(toggleImageVisible);
+		}else{
+			currentImage -= 1;
+			images[currentImage].classList.toggle(toggleImageVisible);
+		}
 	}
 }
 
-}
-
 function handleNextbuttonClick() {
-	images[currentImage].classList.toggle(toggleImageVisible);;
+	images[currentImage].classList.toggle(toggleImageVisible);
 	if((currentImage+1)===images.length){
 		currentImage = 0;
-		images[currentImage].classList.toggle(toggleImageVisible);;
+		images[currentImage].classList.toggle(toggleImageVisible);
 	}else{
 		currentImage += 1;
-		images[currentImage].classList.toggle(toggleImageVisible);;
+		images[currentImage].classList.toggle(toggleImageVisible);
 	}
 }
 
