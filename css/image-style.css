@@ -1,7 +1,12 @@
 .slide-show__image-box {
-	width: 100%;
+	display: none;
+	width: 100vw;
 	max-width: 45rem;
 	margin: 0 auto;
+}
+
+.slide-show__image-box--visible{
+	display: block;
 }
 
 .slide-show__image-portrait {

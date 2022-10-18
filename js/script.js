@@ -11,7 +11,7 @@ const toggleButtonImageClear = 'image-button__go-to--clear'
 nextButton.addEventListener('click', handleNextbuttonClick);
 previousButton.addEventListener('click', handlePrevbuttonClick);
 images.forEach(image => {
-	image.addEventListener('click', handleMouseUp)
+	image.addEventListener('click', handleImageClick);
 	//image.addEventListener('click', handleNextbuttonClick)
 })
 
@@ -19,20 +19,27 @@ goToImageButton.forEach(button => {
 	button.addEventListener('click', handleGoToImageClick)
 })
 
+
 window.addEventListener('keyup', handleKeyUp)
 
 toggleVisiblity();
 
-function handleMouseUp (event) {
+function handleImageClick (event) {
 	let style = getComputedStyle(event.currentTarget.firstElementChild)
 	let width = parseInt(style.width)
+	//console.log(width)
+	//console.log(event.offsetX)
+	if(event.offsetX >=0 && event.offsetX <= width){
 	toggleVisiblity();
 	if(event.offsetX >= (width/2) && event.offsetX <= width){
+		//console.log('next')
 		increaseImageNumber();
 			
 	}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
+		//console.log('prev')
 		decreaseImageNumber();
 	}
+}
 }
 
 function handleNextbuttonClick() {
