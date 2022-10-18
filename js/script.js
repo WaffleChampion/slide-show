@@ -21,122 +21,75 @@ goToImageButton.forEach(button => {
 
 window.addEventListener('keyup', handleKeyUp)
 
-images[currentImage].classList.toggle(toggleImageVisible);
-goToImageButton[currentImage].classList.toggle(toggleButtonImageClear)
+toggleVisiblity();
 
 function handleMouseUp (event) {
 	let style = getComputedStyle(event.currentTarget.firstElementChild)
 	let width = parseInt(style.width)
-	images[currentImage].classList.toggle(toggleImageVisible);
-	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear)
+	toggleVisiblity();
 	if(event.offsetX >= (width/2) && event.offsetX <= width){
-		if((currentImage+1)===images.length){
-			currentImage = 0;
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear)
-		}else{
-			currentImage += 1;
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear)
-		}
+		increaseImageNumber();
 			
 	}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
-		if(currentImage===0){
-			currentImage = (images.length-1);
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-		}else{
-			currentImage -= 1;
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-		}
+		decreaseImageNumber();
 	}
 }
 
 function handleNextbuttonClick() {
-	images[currentImage].classList.toggle(toggleImageVisible);
-	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-	if((currentImage+1)===images.length){
-		currentImage = 0;
-		images[currentImage].classList.toggle(toggleImageVisible);
-		goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-	}else{
-		currentImage += 1;
-		images[currentImage].classList.toggle(toggleImageVisible);
-		goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-	}
+	toggleVisiblity();
+	increaseImageNumber();
 }
 
 
 function handlePrevbuttonClick() {
-	images[currentImage].classList.toggle(toggleImageVisible);
-	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-	if(currentImage===0){
-		currentImage = (images.length-1);
-		images[currentImage].classList.toggle(toggleImageVisible);
-		goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-	}else{
-		currentImage -= 1;
-		images[currentImage].classList.toggle(toggleImageVisible);
-		goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-	}
+	toggleVisiblity();
+	decreaseImageNumber();
 	
 }
 
 function handleGoToImageClick(event) {
 	let currentTarget = event.currentTarget;
-	images[currentImage].classList.toggle(toggleImageVisible);
-	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+	toggleVisiblity();
 	switch (currentTarget.id) {
 		case 'button1':
 			currentImage=0;
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 			break;
 		case 'button2':
 			currentImage=1;
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 			break;
 		case 'button3':
 			currentImage=2
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button4':
 			currentImage=3
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button5':
 			currentImage=4
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button6':
 			currentImage=5
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button7':
 			currentImage=6
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button8':
 			currentImage=7
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button9':
 			currentImage=8
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		case 'button10':
 			currentImage=9
-			images[currentImage].classList.toggle(toggleImageVisible);
-			goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+			toggleVisiblity();
 		break;
 		default:
 
@@ -147,29 +100,38 @@ function handleGoToImageClick(event) {
 
 function handleKeyUp(event) {
 	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
-		images[currentImage].classList.toggle(toggleImageVisible);
-		goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+		toggleVisiblity();
 		if(event.key==='ArrowLeft'){
-			if(currentImage===0){
-				currentImage = (images.length-1);
-				images[currentImage].classList.toggle(toggleImageVisible);
-				goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-			}else{
-				currentImage -= 1;
-				images[currentImage].classList.toggle(toggleImageVisible);
-				goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-			}
+			decreaseImageNumber();
 			
 		}else if(event.key==='ArrowRight'){
-			if((currentImage+1)===images.length){
-				currentImage = 0;
-				images[currentImage].classList.toggle(toggleImageVisible);
-				goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-			}else{
-				currentImage += 1;
-				images[currentImage].classList.toggle(toggleImageVisible);
-				goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
-			}
+			increaseImageNumber();
 		}
+	}
+}
+
+function toggleVisiblity () {
+	images[currentImage].classList.toggle(toggleImageVisible);
+	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+}
+
+function increaseImageNumber() {
+	if((currentImage+1)===images.length){
+		currentImage = 0;
+		toggleVisiblity();
+	}else{
+		currentImage += 1;
+		toggleVisiblity();
+	}
+}
+
+function decreaseImageNumber() {
+	
+	if(currentImage===0){
+		currentImage = (images.length-1);
+		toggleVisiblity();
+	}else{
+		currentImage -= 1;
+		toggleVisiblity();
 	}
 }
