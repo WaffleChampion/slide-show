@@ -1,0 +1,58 @@
+html {
+	font-size: 20px;
+}
+
+.image-button__go-to {
+	width: 3rem;
+	height: 3rem;
+	border: 1px solid black;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	transition: all 300ms ease-in-out;
+	background-color: rgba(rgba(40, 39, 39, 0.164));
+}
+
+.image-button__go-to:hover {
+	transform: scale(1.5);
+}
+
+#button1 {
+	background-image: url(../assets/img/beef.jpg);
+}
+
+#button2 {
+	background-image: url(../assets/img/hamburger.jpg);
+}
+
+#button3 {
+	background-image: url(../assets/img/lasagna.jpg);
+}
+
+#button4 {
+	background-image: url(../assets/img/meat.jpg);
+}
+
+#button5 {
+	background-image: url(../assets/img/pasta.jpg);
+}
+
+#button6 {
+	background-image: url(../assets/img/salad.jpg);
+}
+
+#button7 {
+	background-image: url(../assets/img/sushi-bowl.jpg);
+}
+
+#button8 {
+	background-image: url(../assets/img/taco.jpg);
+}
+
+#button9 {
+	background-image: url(../assets/img/dessert.jpg);
+}
+
+#button10 {
+	background-image: url(../assets/img/milkshake.jpg);
+}
