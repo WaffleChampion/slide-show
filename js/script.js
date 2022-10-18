@@ -102,10 +102,10 @@ function handleKeyUp(event) {
 	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
 		toggleVisiblity();
 		if(event.key==='ArrowLeft'){
-			increaseImageNumber()
+			decreaseImageNumber();
 			
 		}else if(event.key==='ArrowRight'){
-			decreaseImageNumber()
+			increaseImageNumber();
 		}
 	}
 }
@@ -116,21 +116,22 @@ function toggleVisiblity () {
 }
 
 function increaseImageNumber() {
-	if(currentImage===0){
-		currentImage = (images.length-1);
-		toggleVisiblity();
-	}else{
-		currentImage -= 1;
-		toggleVisiblity();
-	}
-}
-
-function decreaseImageNumber() {
 	if((currentImage+1)===images.length){
 		currentImage = 0;
 		toggleVisiblity();
 	}else{
 		currentImage += 1;
+		toggleVisiblity();
+	}
+}
+
+function decreaseImageNumber() {
+	
+	if(currentImage===0){
+		currentImage = (images.length-1);
+		toggleVisiblity();
+	}else{
+		currentImage -= 1;
 		toggleVisiblity();
 	}
 }
