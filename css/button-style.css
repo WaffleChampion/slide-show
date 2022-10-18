@@ -1,18 +1,24 @@
-html {
-	font-size: 20px;
+.slide-show__next-image, .slide-show__previous-image {
+	font-size: 3rem;
+	align-items: center;
+	transition: all 300ms ease-in-out;
+	opacity: 0.7;
+}
+
+.slide-show__next-image:hover, .slide-show__previous-image:hover {
+	transform: scale(1.4);
 }
 
 .image-button__go-to {
 	width: 3rem;
 	height: 3rem;
-	margin: 1rem;
+	margin: 0.5rem;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	transition: all 300ms ease-in-out;
 	background-color: rgba(rgba(40, 39, 39, 0.164));
 	box-shadow: inset 0 0 0 50rem rgba(0, 0, 0 , 0.5);
-
 }
 
 .image-button__go-to:hover {
