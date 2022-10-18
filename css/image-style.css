@@ -1,7 +1,5 @@
 .slide-show__image-box {
 	display: none;
-	width: 100vw;
-	max-width: 45rem;
 	margin: 0 auto;
 }
 
@@ -19,3 +17,9 @@
 	width: 21rem;
 	height: 15rem;
 }
+
+.slide-show__image-square {
+	height: 20rem;
+	width: 20rem;
+}
+

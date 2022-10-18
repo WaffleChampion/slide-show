@@ -1,0 +1,24 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	background-color: rgb(22, 22, 22);
+	color: #fff;
+}
+
+.slide-show {
+	margin: 2rem auto;
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	gap: 1rem;
+	text-align: center;
+	width: 100vw;
+	max-width: 45rem;
+	height: 25rem;
+}
+
+.image-button {
+	margin: 0 auto;
+	text-align: center;
+}
