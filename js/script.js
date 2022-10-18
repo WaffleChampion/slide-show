@@ -1,45 +1,39 @@
+//Imports
 const images = document.querySelectorAll('.slide-show__image-box');
 const nextButton = document.querySelector('.slide-show__next-image');
 const previousButton = document.querySelector('.slide-show__previous-image');
-const goToImageButton = document.querySelectorAll('.image-button__go-to')
+const goToImageButton = document.querySelectorAll('.image-button__go-to');
 
+//Variables
 let currentImage = 0;
-
 const toggleImageVisible = 'slide-show__image-box--visible';
-const toggleButtonImageClear = 'image-button__go-to--clear'
+const toggleButtonImageClear = 'image-button__go-to--clear';
 
+//Eventlisteners
 nextButton.addEventListener('click', handleNextbuttonClick);
 previousButton.addEventListener('click', handlePrevbuttonClick);
 images.forEach(image => {
 	image.addEventListener('click', handleImageClick);
-	//image.addEventListener('click', handleNextbuttonClick)
 })
-
 goToImageButton.forEach(button => {
-	button.addEventListener('click', handleGoToImageClick)
+	button.addEventListener('click', handleGoToImageClick);
 })
-
-
-window.addEventListener('keyup', handleKeyUp)
+window.addEventListener('keyup', handleKeyUp);
 
 toggleVisiblity();
 
+//Functions
 function handleImageClick (event) {
-	let style = getComputedStyle(event.currentTarget.firstElementChild)
-	let width = parseInt(style.width)
-	//console.log(width)
-	//console.log(event.offsetX)
+	let style = getComputedStyle(event.currentTarget.firstElementChild);
+	let width = parseInt(style.width);
 	if(event.offsetX >=0 && event.offsetX <= width){
-	toggleVisiblity();
-	if(event.offsetX >= (width/2) && event.offsetX <= width){
-		//console.log('next')
-		increaseImageNumber();
-			
-	}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
-		//console.log('prev')
-		decreaseImageNumber();
+		toggleVisiblity();
+		if(event.offsetX >= (width/2) && event.offsetX <= width){
+			increaseImageNumber();	
+		}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
+			decreaseImageNumber();
+		}
 	}
-}
 }
 
 function handleNextbuttonClick() {
@@ -47,11 +41,9 @@ function handleNextbuttonClick() {
 	increaseImageNumber();
 }
 
-
 function handlePrevbuttonClick() {
 	toggleVisiblity();
 	decreaseImageNumber();
-	
 }
 
 function handleGoToImageClick(event) {
@@ -98,11 +90,7 @@ function handleGoToImageClick(event) {
 			currentImage=9
 			toggleVisiblity();
 		break;
-		default:
-
-		break;
 	}
-
 }
 
 function handleKeyUp(event) {
@@ -133,7 +121,6 @@ function increaseImageNumber() {
 }
 
 function decreaseImageNumber() {
-	
 	if(currentImage===0){
 		currentImage = (images.length-1);
 		toggleVisiblity();
