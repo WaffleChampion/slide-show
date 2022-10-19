@@ -20,9 +20,17 @@ goToImageButton.forEach(button => {
 })
 window.addEventListener('keyup', handleKeyUp);
 
+//Shows the first image
 toggleVisiblity();
 
 //Functions
+/* 
+Function to handle clicking on the image
+Gets the width of the image clicked
+Hides the current image
+shows the next image if clicked on the right half
+shows the previous image if clicked on the left half
+*/
 function handleImageClick (event) {
 	let style = getComputedStyle(event.currentTarget.firstElementChild);
 	let width = parseInt(style.width);
@@ -36,16 +44,29 @@ function handleImageClick (event) {
 	}
 }
 
+/* 
+Function to handle clicking on the button for next image
+hides current image and shows the next image in the array
+*/
 function handleNextbuttonClick() {
 	toggleVisiblity();
 	increaseImageNumber();
 }
 
+/* 
+Function to handle clicking on the button for previous image
+hides current image and shows the previous image in the array
+*/
 function handlePrevbuttonClick() {
 	toggleVisiblity();
 	decreaseImageNumber();
 }
 
+/* 
+Function to handle clicking on one of the buttons to go to a specific image
+hides the current image then checks the id of the button clicked and matches with
+the corresponding image in the array
+*/
 function handleGoToImageClick(event) {
 	let currentTarget = event.currentTarget;
 	toggleVisiblity();
@@ -93,6 +114,12 @@ function handleGoToImageClick(event) {
 	}
 }
 
+/* 
+Function to handle a key press on the keyboard
+checks if the key pressed is arrowleft or arrowright
+then shows the previous image if arrowleft is pressed
+shows next image if arrowright is pressed
+*/
 function handleKeyUp(event) {
 	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
 		toggleVisiblity();
@@ -105,11 +132,20 @@ function handleKeyUp(event) {
 	}
 }
 
+/* 
+Function to show or hide a image
+toggles the --visible and --clear class
+*/
 function toggleVisiblity () {
 	images[currentImage].classList.toggle(toggleImageVisible);
 	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
 }
 
+/* 
+Function to increase array index and show the new image
+cheks if the current image is the last in the array
+and sets the index to 0 if it is
+*/
 function increaseImageNumber() {
 	if((currentImage+1)===images.length){
 		currentImage = 0;
@@ -120,6 +156,11 @@ function increaseImageNumber() {
 	}
 }
 
+/* 
+Function to decrease array index and show new image
+checks if the current image is the first in the array
+and sets the index to the last in the array if it is
+*/
 function decreaseImageNumber() {
 	if(currentImage===0){
 		currentImage = (images.length-1);
