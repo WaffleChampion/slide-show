@@ -1,8 +1,8 @@
-//Imports
 const images = document.querySelectorAll('.slide-show__image-box');
 const nextButton = document.querySelector('.slide-show__next-image');
 const previousButton = document.querySelector('.slide-show__previous-image');
-const goToImageButton = document.querySelectorAll('.image-button__go-to');
+
+const buttonSection = document.querySelector('.image-button');
 
 //Variables
 let currentImage = 0;
@@ -14,14 +14,27 @@ nextButton.addEventListener('click', handleNextbuttonClick);
 previousButton.addEventListener('click', handlePrevbuttonClick);
 images.forEach(image => {
 	image.addEventListener('click', handleImageClick);
-})
+});
+
+//Generates buttons for each image
+images.forEach((image, index) => {
+	let newButton = document.createElement('button');
+	newButton.setAttribute('class', 'image-button__go-to');
+	newButton.setAttribute('data-index', index);
+	let background = image.firstElementChild.src;
+	newButton.style.backgroundImage='url('+background;
+	buttonSection.append(newButton);
+});
+
+const goToImageButton = document.querySelectorAll('.image-button__go-to');
 goToImageButton.forEach(button => {
 	button.addEventListener('click', handleGoToImageClick);
-})
+});
+
 window.addEventListener('keyup', handleKeyUp);
 
 //Shows the first image
-toggleVisiblity();
+render();
 
 //Functions
 /* 
@@ -32,10 +45,12 @@ shows the next image if clicked on the right half
 shows the previous image if clicked on the left half
 */
 function handleImageClick (event) {
+	//Uses getComputedStyle to read the css values of the target
 	let style = getComputedStyle(event.currentTarget.firstElementChild);
+	//Uses parseInt to convert string to integer
 	let width = parseInt(style.width);
 	if(event.offsetX >=0 && event.offsetX <= width){
-		toggleVisiblity();
+		render();
 		if(event.offsetX >= (width/2) && event.offsetX <= width){
 			increaseImageNumber();	
 		}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
@@ -49,7 +64,7 @@ Function to handle clicking on the button for next image
 hides current image and shows the next image in the array
 */
 function handleNextbuttonClick() {
-	toggleVisiblity();
+	render();
 	increaseImageNumber();
 }
 
@@ -58,7 +73,7 @@ Function to handle clicking on the button for previous image
 hides current image and shows the previous image in the array
 */
 function handlePrevbuttonClick() {
-	toggleVisiblity();
+	render();
 	decreaseImageNumber();
 }
 
@@ -68,50 +83,53 @@ hides the current image then checks the id of the button clicked and matches wit
 the corresponding image in the array
 */
 function handleGoToImageClick(event) {
-	let currentTarget = event.currentTarget;
-	toggleVisiblity();
-	switch (currentTarget.id) {
+	//let currentTarget = event.currentTarget;
+	render();
+	let index = parseInt(event.currentTarget.dataset.index)
+	currentImage = index
+	render()
+	/* switch (currentTarget.id) {
 		case 'button1':
 			currentImage=0;
-			toggleVisiblity();
+			render();
 			break;
 		case 'button2':
 			currentImage=1;
-			toggleVisiblity();
+			render();
 			break;
 		case 'button3':
 			currentImage=2
-			toggleVisiblity();
+			render();
 		break;
 		case 'button4':
 			currentImage=3
-			toggleVisiblity();
+			render();
 		break;
 		case 'button5':
 			currentImage=4
-			toggleVisiblity();
+			render();
 		break;
 		case 'button6':
 			currentImage=5
-			toggleVisiblity();
+			render();
 		break;
 		case 'button7':
 			currentImage=6
-			toggleVisiblity();
+			render();
 		break;
 		case 'button8':
 			currentImage=7
-			toggleVisiblity();
+			render();
 		break;
 		case 'button9':
 			currentImage=8
-			toggleVisiblity();
+			render();
 		break;
 		case 'button10':
 			currentImage=9
-			toggleVisiblity();
+			render();
 		break;
-	}
+	}  */
 }
 
 /* 
@@ -122,7 +140,7 @@ shows next image if arrowright is pressed
 */
 function handleKeyUp(event) {
 	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
-		toggleVisiblity();
+		render();
 		if(event.key==='ArrowLeft'){
 			decreaseImageNumber();
 			
@@ -136,7 +154,7 @@ function handleKeyUp(event) {
 Function to show or hide a image
 toggles the --visible and --clear class
 */
-function toggleVisiblity () {
+function render () {
 	images[currentImage].classList.toggle(toggleImageVisible);
 	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
 }
@@ -149,10 +167,10 @@ and sets the index to 0 if it is
 function increaseImageNumber() {
 	if((currentImage+1)===images.length){
 		currentImage = 0;
-		toggleVisiblity();
+		render();
 	}else{
 		currentImage += 1;
-		toggleVisiblity();
+		render();
 	}
 }
 
@@ -164,9 +182,9 @@ and sets the index to the last in the array if it is
 function decreaseImageNumber() {
 	if(currentImage===0){
 		currentImage = (images.length-1);
-		toggleVisiblity();
+		render();
 	}else{
 		currentImage -= 1;
-		toggleVisiblity();
+		render();
 	}
 }
