@@ -10,16 +10,19 @@
 .slide-show__image-portrait {
 	width: 15rem;
 	height: 21rem;
+	margin-top: 2rem;
 }
 
 
 .slide-show__image-landscape {
 	width: 21rem;
 	height: 15rem;
+	margin-top: 4rem;
 }
 
 .slide-show__image-square {
 	height: 20rem;
 	width: 20rem;
+	margin-top: 2rem;
 }
 
