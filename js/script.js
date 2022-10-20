@@ -22,7 +22,7 @@ images.forEach((image, index) => {
 	newButton.setAttribute('class', 'image-button__go-to');
 	newButton.setAttribute('data-index', index);
 	let background = image.firstElementChild.src;
-	newButton.style.backgroundImage='url('+background;
+	newButton.style.backgroundImage=`url(${background})`;
 	buttonSection.append(newButton);
 });
 
@@ -85,7 +85,7 @@ the corresponding image in the array
 function handleGoToImageClick(event) {
 	//let currentTarget = event.currentTarget;
 	render();
-	let index = parseInt(event.currentTarget.dataset.index)
+	let index = Number(event.currentTarget.dataset.index)
 	currentImage = index
 	render()
 	/* switch (currentTarget.id) {
