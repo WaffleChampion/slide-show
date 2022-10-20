@@ -5,7 +5,10 @@ const previousButton = document.querySelector('.slide-show__previous-image');
 const buttonSection = document.querySelector('.image-button');
 
 //Variables
-let currentImage = 0;
+if(!localStorage.getItem('imageIndex')){
+	localStorage.clear()
+	localStorage.setItem('imageIndex', 0)
+}
 const toggleImageVisible = 'slide-show__image-box--visible';
 const toggleButtonImageClear = 'image-button__go-to--clear';
 
@@ -86,7 +89,7 @@ function handleGoToImageClick(event) {
 	//let currentTarget = event.currentTarget;
 	render();
 	let index = Number(event.currentTarget.dataset.index)
-	currentImage = index
+	localStorage.setItem('imageIndex', index)
 	render()
 	/* switch (currentTarget.id) {
 		case 'button1':
@@ -155,8 +158,9 @@ Function to show or hide a image
 toggles the --visible and --clear class
 */
 function render () {
-	images[currentImage].classList.toggle(toggleImageVisible);
-	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
+	const storedImage = Number(localStorage.getItem('imageIndex'))
+	images[storedImage].classList.toggle(toggleImageVisible);
+	goToImageButton[storedImage].classList.toggle(toggleButtonImageClear);
 }
 
 /* 
@@ -165,11 +169,14 @@ cheks if the current image is the last in the array
 and sets the index to 0 if it is
 */
 function increaseImageNumber() {
-	if((currentImage+1)===images.length){
-		currentImage = 0;
+	let storedImage = Number(localStorage.getItem('imageIndex'))
+	if((storedImage+1)===images.length){
+		storedImage = 0
+		localStorage.setItem('imageIndex', storedImage)
 		render();
 	}else{
-		currentImage += 1;
+		storedImage += 1
+		localStorage.setItem('imageIndex', storedImage)
 		render();
 	}
 }
@@ -180,11 +187,14 @@ checks if the current image is the first in the array
 and sets the index to the last in the array if it is
 */
 function decreaseImageNumber() {
-	if(currentImage===0){
-		currentImage = (images.length-1);
+	let storedImage = Number(localStorage.getItem('imageIndex'))
+	if(storedImage===0){
+		storedImage = (images.length-1)
+		localStorage.setItem('imageIndex', storedImage)
 		render();
 	}else{
-		currentImage -= 1;
+		storedImage -= 1
+		localStorage.setItem('imageIndex', storedImage)
 		render();
 	}
 }
