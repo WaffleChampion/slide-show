@@ -35,18 +35,8 @@ shows the next image if clicked on the right half
 shows the previous image if clicked on the left half
 */
 function handleImageClick (event) {
-	//Uses getComputedStyle to read the css values of the target
-	let style = getComputedStyle(event.currentTarget.firstElementChild);
-	//Uses parseInt to convert string to integer
-	let width = parseInt(style.width);
-	if(event.offsetX >=0 && event.offsetX <= width){
-		render();
-		if(event.offsetX >= (width/2) && event.offsetX <= width){
-			increaseImageNumber();	
-		}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
-			decreaseImageNumber();
-		}
-	}
+	imageClickChange(event)
+	render();
 }
 
 /* 
@@ -54,20 +44,8 @@ Function to handle clicking on the button for next image
 hides current image and shows the next image in the array
 */
 function handleNextbuttonClick() {
-	render();
 	increaseImageNumber();
-}
-
-//Generates buttons for each image
-function generateButtons () {
-	images.forEach((image, index) => {
-		let newButton = document.createElement('button');
-		newButton.setAttribute('class', 'image-button__go-to');
-		newButton.setAttribute('data-index', index);
-		let background = image.firstElementChild.src;
-		newButton.style.backgroundImage=`url(${background})`;
-		buttonSection.append(newButton);
-	});
+	render();
 }
 
 /* 
@@ -75,8 +53,8 @@ Function to handle clicking on the button for previous image
 hides current image and shows the previous image in the array
 */
 function handlePrevbuttonClick() {
-	render();
 	decreaseImageNumber();
+	render();
 }
 
 /* 
@@ -86,7 +64,6 @@ the corresponding image in the array
 */
 function handleGoToImageClick(event) {
 	//let currentTarget = event.currentTarget;
-	render();
 	let index = Number(event.currentTarget.dataset.index)
 	currentImage = index
 	render()
@@ -100,13 +77,13 @@ shows next image if arrowright is pressed
 */
 function handleKeyUp(event) {
 	if(event.key==='ArrowLeft' || event.key==='ArrowRight'){
-		render();
 		if(event.key==='ArrowLeft'){
 			decreaseImageNumber();
 			
 		}else if(event.key==='ArrowRight'){
 			increaseImageNumber();
 		}
+		render();
 	}
 }
 
@@ -115,6 +92,12 @@ Function to show or hide a image
 toggles the --visible and --clear class
 */
 function render () {
+	images.forEach(image => {
+		image.classList.remove(toggleImageVisible)
+	});
+	goToImageButton.forEach(button => {
+		button.classList.remove(toggleButtonImageClear)
+	})
 	images[currentImage].classList.toggle(toggleImageVisible);
 	goToImageButton[currentImage].classList.toggle(toggleButtonImageClear);
 }
@@ -127,10 +110,8 @@ and sets the index to 0 if it is
 function increaseImageNumber() {
 	if((currentImage+1)===images.length){
 		currentImage = 0;
-		render();
 	}else{
 		currentImage += 1;
-		render();
 	}
 }
 
@@ -142,9 +123,33 @@ and sets the index to the last in the array if it is
 function decreaseImageNumber() {
 	if(currentImage===0){
 		currentImage = (images.length-1);
-		render();
 	}else{
 		currentImage -= 1;
-		render();
 	}
+}
+
+function imageClickChange(event) {
+	//Uses getComputedStyle to read the css values of the target
+	let style = getComputedStyle(event.currentTarget.firstElementChild);
+	//Uses parseInt to convert string to integer
+	let width = parseInt(style.width);
+	if(event.offsetX >=0 && event.offsetX <= width){
+		if(event.offsetX >= (width/2) && event.offsetX <= width){
+			increaseImageNumber();	
+		}else if(event.offsetX <= (width/2) && event.offsetX >=0) {
+			decreaseImageNumber();
+		}
+	}
+}
+
+//Generates buttons for each image
+function generateButtons () {
+	images.forEach((image, index) => {
+		let newButton = document.createElement('button');
+		newButton.setAttribute('class', 'image-button__go-to');
+		newButton.setAttribute('data-index', index);
+		let background = image.firstElementChild.src;
+		newButton.style.backgroundImage=`url(${background})`;
+		buttonSection.append(newButton);
+	});
 }
