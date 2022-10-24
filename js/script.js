@@ -1,13 +1,15 @@
-const images = document.querySelectorAll('.slide-show__image-box');
-const nextButton = document.querySelector('.slide-show__next-image');
-const previousButton = document.querySelector('.slide-show__previous-image');
-
-const buttonSection = document.querySelector('.image-button');
-
 //Variables
 let currentImage = 0;
 const toggleImageVisible = 'slide-show__image-box--visible';
 const toggleButtonImageClear = 'image-button__go-to--clear';
+
+//Imports from Html
+const images = document.querySelectorAll('.slide-show__image-box');
+const nextButton = document.querySelector('.slide-show__next-image');
+const previousButton = document.querySelector('.slide-show__previous-image');
+const buttonSection = document.querySelector('.image-button');
+generateButtons()
+const goToImageButton = document.querySelectorAll('.image-button__go-to');
 
 //Eventlisteners
 nextButton.addEventListener('click', handleNextbuttonClick);
@@ -15,18 +17,6 @@ previousButton.addEventListener('click', handlePrevbuttonClick);
 images.forEach(image => {
 	image.addEventListener('click', handleImageClick);
 });
-
-//Generates buttons for each image
-images.forEach((image, index) => {
-	let newButton = document.createElement('button');
-	newButton.setAttribute('class', 'image-button__go-to');
-	newButton.setAttribute('data-index', index);
-	let background = image.firstElementChild.src;
-	newButton.style.backgroundImage=`url(${background})`;
-	buttonSection.append(newButton);
-});
-
-const goToImageButton = document.querySelectorAll('.image-button__go-to');
 goToImageButton.forEach(button => {
 	button.addEventListener('click', handleGoToImageClick);
 });
@@ -68,6 +58,18 @@ function handleNextbuttonClick() {
 	increaseImageNumber();
 }
 
+//Generates buttons for each image
+function generateButtons () {
+	images.forEach((image, index) => {
+		let newButton = document.createElement('button');
+		newButton.setAttribute('class', 'image-button__go-to');
+		newButton.setAttribute('data-index', index);
+		let background = image.firstElementChild.src;
+		newButton.style.backgroundImage=`url(${background})`;
+		buttonSection.append(newButton);
+	});
+}
+
 /* 
 Function to handle clicking on the button for previous image
 hides current image and shows the previous image in the array
@@ -88,48 +90,6 @@ function handleGoToImageClick(event) {
 	let index = Number(event.currentTarget.dataset.index)
 	currentImage = index
 	render()
-	/* switch (currentTarget.id) {
-		case 'button1':
-			currentImage=0;
-			render();
-			break;
-		case 'button2':
-			currentImage=1;
-			render();
-			break;
-		case 'button3':
-			currentImage=2
-			render();
-		break;
-		case 'button4':
-			currentImage=3
-			render();
-		break;
-		case 'button5':
-			currentImage=4
-			render();
-		break;
-		case 'button6':
-			currentImage=5
-			render();
-		break;
-		case 'button7':
-			currentImage=6
-			render();
-		break;
-		case 'button8':
-			currentImage=7
-			render();
-		break;
-		case 'button9':
-			currentImage=8
-			render();
-		break;
-		case 'button10':
-			currentImage=9
-			render();
-		break;
-	}  */
 }
 
 /* 
